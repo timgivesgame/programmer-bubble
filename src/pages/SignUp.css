@@ -1,0 +1,178 @@
+.signup-container{
+    border: red solid 2px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
+    min-height: 95vh;
+}
+
+.signup-card{
+    border: solid 4px blue;
+    max-width: 275px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 1rem;
+
+    background: radial-gradient(circle, rgba(66,83,235,0.1) 60%, rgba(191,235,66,0.1) 100%);;
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+
+    a{
+        text-decoration: none;
+        color: #BFEB42;
+    }
+}
+
+.signup-heading{
+    font-size: 1vw;
+}
+
+.signup-title{
+    margin: 0;
+}
+
+.signup-notice{
+    font-size: 1vw;
+    max-width: 200px;
+}
+
+
+
+
+
+.glassy-input{
+    margin-bottom: 1rem;
+    border: none;
+    border-radius: 0.25rem;
+    padding: 0.25rem 0.5rem;
+
+    
+    background: radial-gradient(circle, rgba(66,83,235,0.1) 60%, rgba(191,235,66,0.1) 100%);;
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+
+    color: aliceblue;
+
+}
+
+input:focus{
+    outline: aliceblue solid 1px;
+}
+
+#signup-btn{
+    padding: 0.3rem 3.1rem;
+    border-radius: 0.3rem;
+    text-transform: uppercase;
+    font-weight: 600;
+
+
+
+    background: radial-gradient(circle, rgba(191,235,66,0.4) 60%, rgba(66,83,235,0.4) 100%);;
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: rgba(191,235,66,1);
+
+   
+   cursor: pointer;
+   border: none;
+   transition: all 0.5s;
+}
+
+#signup-btn:hover{
+    background-color: #4253EB;
+    color: aliceblue;
+}
+
+.signup-divider{
+    font-size: smaller;
+}
+
+.submit-glassy-btn{
+    padding: 0.3rem 3.5rem;
+    border-radius: 0.3rem;
+    text-transform: uppercase;
+    font-weight: 600;
+    cursor: pointer;
+    border: none;
+    transition: all 0.5s;
+
+
+    background: radial-gradient(circle, rgba(191,235,66,0.4) 60%, rgba(66,83,235,0.4) 100%);;
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: rgba(255, 255, 255, 0.736);
+}
+
+.signup-google:hover{
+    background-color: #4253EB;
+    color: aliceblue;
+}
+
+.signup-subtitle{
+    font-size: smaller;
+    font-weight: 200;
+    margin-top: 0rem;
+}
+
+.signup-heading-two{
+    font-size: 0.8rem;
+    margin-bottom: 1rem;
+}
+
+.signup-row{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+
+}
+
+.signup-column{
+    margin-bottom: 1rem;
+    p{
+        font-weight: 200;
+        margin-bottom: 0.25rem;
+    }
+}
+
+.signup-column input::file-selector-button {
+    
+    background: radial-gradient(circle, rgba(191,235,66,0.4) 60%, rgba(66,83,235,0.4) 100%);;
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: rgba(255, 255, 255, 0.736);
+}
+
+.smaller{
+    font-size: x-small;
+}
+
+.signup-page-two .signup-card{
+    padding-top: 1rem;
+}
+
+.signup-page-two{
+    position: relative;
+    transform: translateX(50%);
+    transition: all 1s;
+}
