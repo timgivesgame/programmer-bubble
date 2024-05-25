@@ -1,0 +1,38 @@
+.testimonials-bg{
+    background: url(../../assets/testimonials.jpg);
+    width: 100vw;
+    background-size: cover;
+    background-position: center;
+}
+
+.testimonials-bg-overlay{
+    background:linear-gradient(180deg, rgba(15,15,15,1) 30%, rgba(66,83,235,0.5) 60%, rgba(15,15,15,1) 100%);
+    width: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+
+.testimonials-container{
+    /* border: blue solid 2px; */
+    max-width: 1249px;
+    margin-bottom: 5rem;
+}
+
+.testimonials-desc{
+    font-weight: 300;
+    font-size: 1.2vw;
+}
+
+.testimonials-pic{
+    border-radius: 200px;
+    width: 10vw;
+    height: 10vw;
+}
+
+.testimonials-desc, .features-box h2{
+    filter: drop-shadow(0px 5px 10px #000000);
+}

@@ -1,0 +1,46 @@
+.socials-bg{
+    background: url(../../assets/socials.jpg);
+    width: 100vw;
+    background-size: cover;
+    background-position: center;
+}
+
+.socials-bg-overlay{
+    background: linear-gradient(180deg, rgba(15,15,15,1) 100%, rgba(0,0,0,1) 41%, rgba(15,15,15,1) 0%)
+}
+
+.socials-icons-insta, .socials-icons-yt{
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+.socials-icons-insta:hover{
+    filter: drop-shadow(1px 1px 10px #4253EB);
+}
+
+.socials-icons-yt:hover{
+    filter: drop-shadow(1px 1px 10px #BFEB42);
+}
+
+.socials-icons{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10rem;
+}
+
+.socials-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 8rem;
+}
+
+.socials-title{
+    font-size: 3vw;
+
+    background: -webkit-linear-gradient(90deg, rgb(26, 26, 26) 10%, rgb(255, 255, 255) 70%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
