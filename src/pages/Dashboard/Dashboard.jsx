@@ -24,13 +24,13 @@ const Dashboard = () => {
               <Sidebar /> {/* Ensure Sidebar is added here */}
           </div>
           <div className="dashboard-content">
-              {/* <ContinueCourse />
+              <ContinueCourse />
               <NewProject />
               <JoinDiscussion />
               <LearningProgress />
               <RecommendedForYou />
-              <CommunityHighlights /> */}
-              <Community />
+              <CommunityHighlights />
+              {/* <Community /> */}
           </div>
       </div>
         </div>
