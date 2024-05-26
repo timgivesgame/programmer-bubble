@@ -30,6 +30,10 @@ app.post('/api/signup', async (req, res) => {
 });
 
 
+app.get('/api/signup', (req, res) => {
+    res.status(405).json({ error: 'Method Not Allowed', message: 'This endpoint only accepts POST requests' });
+});
+
 app.post('/api/google-signin', async (req, res) => {
     const { token } = req.body;
 
@@ -71,7 +75,7 @@ app.listen(PORT, () => {
 
 const admin = require('firebase-admin');
 
-const serviceAccount = require('./path/to/serviceAccountKey.json');
+const serviceAccount = require('./programmerbubble-424508-firebase-adminsdk-szjvs-d2aa8c699a.json');
 
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
