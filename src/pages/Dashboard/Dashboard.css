@@ -1,0 +1,101 @@
+/* Dashboard.css */
+body {
+    overflow-x: hidden;
+}
+
+.dashboard-container {
+    display: flex;
+    flex-direction: column;
+    height: 92vh; /* Adjust height as needed */
+    overflow: hidden; /* Ensure content doesn't overflow */
+    background: radial-gradient(circle, rgba(66,83,235,0.2) 0%, rgba(191,235,66,0.1) 100%); /* Gradient background */
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+    backdrop-filter: blur(10px); /* Frosted glass effect */
+    -webkit-backdrop-filter: blur(10px); /* For Safari */
+    border: 1px solid rgba(255, 255, 255, 0.3); /* Light border */
+    border-radius: 8px; /* Rounded corners */
+    padding: 16px; /* Padding inside the component */
+    flex-shrink: 0;
+}
+
+.dashboard-lower {
+    display: flex;
+    flex: 1;
+    overflow: hidden;
+}
+
+.dashboard-header {
+    flex-shrink: 0;
+}
+
+.dashboard-sidenav {
+    width: 250px; /* Adjust the width of your sidebar as needed */
+    padding: 16px;
+    background: radial-gradient(circle, rgba(66,83,235,0.1) 0%, rgba(191,235,66,0.2) 100%); /* Gradient background */
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+    backdrop-filter: blur(10px); /* Frosted glass effect */
+    -webkit-backdrop-filter: blur(10px); /* For Safari */
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 0.2rem;
+}
+
+.dashboard-content {
+    flex-grow: 1;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Grid layout */
+    gap: 16px; /* Space between components */
+    padding: 16px;
+    overflow-y: auto; /* Allow scrolling if content overflows */
+}
+
+.dashboard-content > * {
+    background: radial-gradient(circle, rgba(191,235,66,0.5) 10%, rgba(66,83,235,0.1) 80%); /* Gradient background */
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+    backdrop-filter: blur(10px); /* Frosted glass effect */
+    -webkit-backdrop-filter: blur(10px); /* For Safari */
+    border: 1px solid rgba(255, 255, 255, 0.3); /* Light border */
+    border-radius: 8px; /* Rounded corners */
+    padding: 16px; /* Padding inside the component */
+    height: 200px; /* Adjust height as needed */
+}
+
+.navigation-menu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 16px;
+    background: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 0.2rem;
+}
+
+.navigation-menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+.navigation-menu li {
+    padding: 10px 20px;
+    color: white;
+    cursor: pointer;
+}
+
+.navigation-menu li:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+
+.dashboard-card-title{
+    font-size: 1rem;
+    text-align: center;
+}
+
+.dashboard-card-subtitle{
+    font-size: 1rem;
+}

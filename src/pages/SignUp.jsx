@@ -1,5 +1,7 @@
+// SignUp.jsx
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import { GoogleOAuthProvider, GoogleLogin } from '@react-oauth/google';
 import './SignUp.css';
 
 const SignUp = () => {
@@ -14,6 +16,15 @@ const SignUp = () => {
             cardTwo[0].removeAttribute('hidden', '');
             cardTwo[0].style.transform = 'translateX(0)';
         }
+    };
+
+    const handleGoogleSuccess = (response) => {
+        console.log('Google login successful:', response);
+        navigate('/dashboard');
+    };
+
+    const handleGoogleFailure = (error) => {
+        console.error('Google login failed:', error);
     };
 
     const handleSubmitClick = () => {
@@ -37,7 +48,12 @@ const SignUp = () => {
                         <p>or continue with</p>
                     </div>
                     <div className="signup-alternative">
-                        <button className="submit-glassy-btn">Google</button>
+                        <GoogleOAuthProvider clientId="459741616357-k1h92ul4h6q33rp7v28eud7fepmfjnp7.apps.googleusercontent.com">
+                            <GoogleLogin
+                                onSuccess={handleGoogleSuccess}
+                                onFailure={handleGoogleFailure}
+                            />
+                        </GoogleOAuthProvider>
                     </div>
                     <div className="signup-notice">
                         <p>By clicking continue, you agree to our <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a></p>
