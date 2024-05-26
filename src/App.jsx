@@ -1,58 +1,29 @@
-import { useState, useEffect } from 'react'
-import './App.css'
-import Home from './components/Home'
-import Features from './components/Features/Features'
-import Testimonials from './components/Testimonials.jsx/Testimonials'
-import Newsletter from './components/Newsletter/Newsletter'
-import Socials from './components/Socials/Socials'
-import Footer from './components/Footer/Footer'
-import Navbar from './components/Navbar/Navbar'
+import React, { useState } from 'react';
+import './App.css';
+import Home from './components/Home';
+import SignUp from './pages/SignUp';
+import Dashboard from './pages/Dashboard/Dashboard';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 function App() {
-  const [title, setTitle] = useState("HOME")
+  // const [showSignUp, setShowSignUp] = useState(false);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      const home = document.getElementById('home');
-      const features = document.getElementById('features');
-      const testimonials = document.getElementById('testimonials');
-      const newsletter = document.getElementById('newsletter');
-      const socials = document.getElementById('socials');
-      
-      const scrollPosition = window.scrollY + window.innerHeight / 2;
-
-      if (home && scrollPosition < features.offsetTop) {
-        setTitle("HOME");
-      } else if (features && scrollPosition < testimonials.offsetTop) {
-        setTitle("FEATURES");
-      } else if (testimonials && scrollPosition < newsletter.offsetTop) {
-        setTitle("TESTIMONIALS");
-      } else if (newsletter && scrollPosition < socials.offsetTop) {
-        setTitle("NEWSLETTER");
-      } else if (socials && scrollPosition < document.body.scrollHeight) {
-        setTitle("SOCIALS");
-      } else {
-        setTitle("FOOTER");
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
+  // const handleGetStartedClick = () => {
+  //   setShowSignUp(true);
+  // };
 
   return (
-    <div className="container">
-      <Navbar title={title} />
-      <section id="home"><Home /></section>
-      <section id="features"><Features /></section>
-      <section id="testimonials"><Testimonials /></section>
-      <section id="newsletter"><Newsletter /></section>
-      <section id="socials"><Socials /></section>
-      <Footer />
-    </div>
-  )
+    // <div className="container">
+    //   {showSignUp ? <SignUp /> : <Home onGetStartedClick={handleGetStartedClick} />}
+    // </div>
+    <Router basename="/programmer-bubble">
+    <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/signup" element={<SignUp />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+    </Routes>
+</Router>
+  );
 }
 
 export default App;
