@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './Home.css';
 import Hero from '../components/Hero/Hero';
 import Features from '../components/Features/Features';
@@ -10,6 +11,7 @@ import Navbar from '../components/Navbar/Navbar';
 
 const Home = ({ onGetStartedClick }) => {
   const [title, setTitle] = useState("HOME");
+  const navigate = useNavigate();
 
   // Refs for sections
   const homeRef = useRef(null);
@@ -41,10 +43,14 @@ const Home = ({ onGetStartedClick }) => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const handleGetStartedClick = () => {
+    navigate('/signup');
+};
+
   return (
     <div>
       <Navbar title={title} />
-      <section id="home" ref={homeRef}><Hero onGetStartedClick={onGetStartedClick} /></section>
+      <section id="home" ref={homeRef}><Hero onGetStartedClick={handleGetStartedClick} /></section>
       <section id="features" ref={featuresRef}><Features /></section>
       <section id="testimonials" ref={testimonialsRef}><Testimonials /></section>
       <section id="newsletter" ref={newsletterRef}><Newsletter /></section>
