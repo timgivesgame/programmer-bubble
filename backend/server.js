@@ -2,6 +2,9 @@ const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const { OAuth2Client } = require('google-auth-library');
+require('dotenv').config();
+const credentials = JSON.parse(process.env.FIREBASE_ADMIN_SDK_CREDENTIALS);
+
 
 const app = express();
 const PORT = 5000;
@@ -75,7 +78,7 @@ app.listen(PORT, () => {
 
 const admin = require('firebase-admin');
 
-const serviceAccount = require('./programmerbubble-424508-firebase-adminsdk-szjvs-d2aa8c699a.json');
+const serviceAccount = require(credentials);
 
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
