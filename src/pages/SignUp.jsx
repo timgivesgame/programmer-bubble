@@ -1,11 +1,18 @@
-// SignUp.jsx
-import React from 'react';
+// src/components/SignUp.jsx
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { GoogleOAuthProvider, GoogleLogin } from '@react-oauth/google';
+import axios from 'axios';
 import './SignUp.css';
 
 const SignUp = () => {
     const navigate = useNavigate();
+    const [email, setEmail] = useState('');
+    const [firstName, setFirstName] = useState('');
+    const [lastName, setLastName] = useState('');
+    const [password, setPassword] = useState('');
+    const [confirmPassword, setConfirmPassword] = useState('');
+    const [username, setUsername] = useState('');
 
     const handleSignupClick = () => {
         const card = document.getElementsByClassName('signup-page-one');
@@ -18,17 +25,41 @@ const SignUp = () => {
         }
     };
 
-    const handleGoogleSuccess = (response) => {
+    const handleGoogleSuccess = async (response) => {
         console.log('Google login successful:', response);
-        navigate('/dashboard');
+        try {
+            const idToken = response.credential;
+            const googleResponse = await axios.post('https://your-backend-url/api/google-login', { idToken });
+            console.log(googleResponse.data.message);
+            navigate('/dashboard');
+        } catch (error) {
+            console.error('Google login failed', error);
+        }
     };
 
     const handleGoogleFailure = (error) => {
         console.error('Google login failed:', error);
     };
 
-    const handleSubmitClick = () => {
-        navigate('/dashboard');
+    const handleSubmitClick = async () => {
+        if (password !== confirmPassword) {
+            alert('Passwords do not match');
+            return;
+        }
+
+        try {
+            const signupResponse = await axios.post('https://your-backend-url/api/signup', {
+                email,
+                firstName,
+                lastName,
+                password,
+                username
+            });
+            console.log(signupResponse.data.message);
+            navigate('/dashboard');
+        } catch (error) {
+            console.error('Error signing up user', error);
+        }
     };
 
     return (
@@ -40,7 +71,7 @@ const SignUp = () => {
                         <p className="signup-subtitle">Enter your email to sign up for this app</p>
                     </div>
                     <div className="signup-form">
-                        <input type="text" id="signup-input" size={29} placeholder="john123@gmail.com" className="glassy-input" />
+                        <input type="text" id="signup-input" size={29} placeholder="john123@gmail.com" className="glassy-input" value={email} onChange={(e) => setEmail(e.target.value)} />
                         <br />
                         <button id="signup-btn" onClick={handleSignupClick}>Sign up with email</button>
                     </div>
@@ -68,17 +99,17 @@ const SignUp = () => {
                     </div>
                     <div className="signup-grid">
                         <div className="signup-row">
-                            <input type="text" placeholder="First Name" id="user-firstName" className="glassy-input" size={10} />
-                            <input type="text" placeholder="Last Name" id="user-lastName" className="glassy-input" size={10} />
+                            <input type="text" placeholder="First Name" id="user-firstName" className="glassy-input" size={10} value={firstName} onChange={(e) => setFirstName(e.target.value)} />
+                            <input type="text" placeholder="Last Name" id="user-lastName" className="glassy-input" size={10} value={lastName} onChange={(e) => setLastName(e.target.value)} />
                         </div>
                         <div className="signup-row">
-                            <input type="text" placeholder="Password" id="user-password" className="glassy-input" size={10} />
-                            <input type="text" placeholder="Confirm Password" id="user-password-confirm" className="glassy-input" size={10} />
+                            <input type="password" placeholder="Password" id="user-password" className="glassy-input" size={10} value={password} onChange={(e) => setPassword(e.target.value)} />
+                            <input type="password" placeholder="Confirm Password" id="user-password-confirm" className="glassy-input" size={10} value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} />
                         </div>
                         <div className="signup-column">
                             <p className="poppins-thin"> PROFILE PICTURE (optional) </p>
-                            <input type="file" id="user-username" className="glassy-input" />
-                            <input type="text" placeholder="Username" id="user-username" className="glassy-input" />
+                            <input type="file" id="user-profile-picture" className="glassy-input" />
+                            <input type="text" placeholder="Username" id="user-username" className="glassy-input" value={username} onChange={(e) => setUsername(e.target.value)} />
                         </div>
                     </div>
                     <div className="signup-alternative">
