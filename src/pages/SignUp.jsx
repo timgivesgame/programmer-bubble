@@ -1,7 +1,9 @@
+// src/pages/SignUp.js
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { GoogleOAuthProvider, GoogleLogin } from '@react-oauth/google';
-import axios from 'axios';
+import { auth, signInWithGoogle } from '@/firebaseConfig'; // Assuming firebaseConfig.js is located in src directory alias
+
 import './SignUp.css';
 
 const SignUp = () => {
@@ -10,7 +12,6 @@ const SignUp = () => {
     const handleSignupClick = () => {
         const card = document.getElementsByClassName('signup-page-one');
         const cardTwo = document.getElementsByClassName('signup-page-two');
-
         if (!card[0].hasAttribute('hidden')) {
             card[0].setAttribute('hidden', '');
             cardTwo[0].removeAttribute('hidden', '');
@@ -18,19 +19,14 @@ const SignUp = () => {
         }
     };
 
-    const handleGoogleSuccess = (response) => {
-        console.log('Google login successful:', response);
-        const token = response.credential;
-
-        // Send token to your backend
-        axios.post('https://your-project-id.cloudfunctions.net/googleLogin', { token })
-            .then((res) => {
-                console.log('Backend response:', res.data);
-                navigate('/dashboard');
-            })
-            .catch((error) => {
-                console.error('Google login failed:', error);
-            });
+    const handleGoogleSuccess = async () => {
+        try {
+            const result = await signInWithGoogle();
+            console.log('Google login successful:', result);
+            navigate('/dashboard');
+        } catch (error) {
+            console.error('Google login failed:', error);
+        }
     };
 
     const handleGoogleFailure = (error) => {
@@ -58,7 +54,7 @@ const SignUp = () => {
                         <p>or continue with</p>
                     </div>
                     <div className="signup-alternative">
-                        <GoogleOAuthProvider clientId="459741616357-k1h92ul4h6q33rp7v28eud7fepmfjnp7.apps.googleusercontent.com">
+                        <GoogleOAuthProvider clientId={import.meta.env.VITE_GOOGLE_CLIENT_ID}>
                             <GoogleLogin
                                 onSuccess={handleGoogleSuccess}
                                 onFailure={handleGoogleFailure}
